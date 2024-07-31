@@ -1,7 +1,12 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.EntityFrameworkCore;
+using SpendSartm.Data;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ExpensesDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("SpendSmartDb")));
 
 var app = builder.Build();
 

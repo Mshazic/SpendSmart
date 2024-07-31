@@ -27,6 +27,15 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult CreateEditExpense()
+    {
+        return View();
+    }
+
+    public IActionResult CreateEditForm(Expense model)
+    {
+        return Redirect("Index");
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
