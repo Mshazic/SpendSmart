@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ExpensesDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SpendSmartDb")));
-
+//this you use when you use inmemoryDatabase
+//option.UseImemoryDatabase("SpendSmartDb"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -10,8 +10,7 @@
 
 <form asp-action="CreateEditForm" asp-controller="Home">
     
-    <label class="mt-4">Id</label>
-    <input class="form-control mb-4" type="number" placeholder="0" asp-for="Id"/>
+    <input hidden class="form-control mb-4" type="number" placeholder="0" asp-for="Id"/>
 
     <label class="mt-4">Value</label>
     <input class="form-control" type="number" placeholder="0" asp-for="Value" />
@@ -19,5 +18,5 @@
     <label class="mt-4">Description</label>
     <textarea class="form-control" type="text" placeholder="Add Description"  asp-for="Decription"></textarea>
 
-    <button class="btn btn-primary mt-4" type="submit">Ok</button>
+    <button class="btn btn-primary mt-4" asp-action="CreateEditForm" type="submit">Ok</button>
 </form>
