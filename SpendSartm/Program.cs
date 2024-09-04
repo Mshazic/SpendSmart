@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SpendSartm.Data;
+using SpendSartm.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ExpensesDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SpendSmartDb")));
+builder.Services.AddTransient<IExpenseRepository, ExpenseRepository > ();
 //this you use when you use inmemoryDatabase
 //option.UseImemoryDatabase("SpendSmartDb"));
 var app = builder.Build();

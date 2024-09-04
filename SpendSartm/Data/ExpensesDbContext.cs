@@ -11,7 +11,8 @@ namespace SpendSartm.Data
 		}
 
         public DbSet<Expense> Expenses { get; set; }
-       
+
+      
     }
 }
 

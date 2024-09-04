@@ -18,8 +18,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Data\" />
+    <None Remove="Repository\" />
+    <None Remove="Views\Expense\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Views\Expense\" />
   </ItemGroup>
 </Project>
