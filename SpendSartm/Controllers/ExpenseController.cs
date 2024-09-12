@@ -34,6 +34,8 @@ namespace SpendSartm.Controllers
             
             var totalExpenses = allExpenses.Sum(x => x.Value);
 
+            ViewBag.Expenses = totalExpenses;
+
             return View(allExpenses);
         }
 
@@ -63,7 +65,7 @@ namespace SpendSartm.Controllers
             return Redirect("Expense");
         }
 
-        public IActionResult DeleteExpense(int? id)
+        public IActionResult DeleteExpense(int id)
         {
             var expenseInDb = _context.Expenses.SingleOrDefault(x => x.Id == id);
             _context.Expenses.Remove(expenseInDb);
