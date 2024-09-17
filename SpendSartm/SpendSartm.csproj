@@ -26,4 +26,13 @@
     <Folder Include="Repository\" />
     <Folder Include="Views\Expense\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Views\Expense\DeleteExpense">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Expense\DeleteExpense.cshtml" />
+  </ItemGroup>
 </Project>

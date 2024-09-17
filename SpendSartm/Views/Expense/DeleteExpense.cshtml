@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Create / Edit";
+}
+
+@model SpendSartm.Models.Expense
+
+<div class="text-center">
+    <h1 class="display-4">Create or Edit an Expense</h1>
+</div>
+
+<form asp-action="CreateEditForm" asp-controller="Expense">
+
+    <input hidden class="form-control mb-4" type="number" placeholder="0" asp-for="Id" />
+
+    <label class="mt-4">Value</label>
+    <input class="form-control" type="number" placeholder="0" asp-for="Value" step="0.01" />
+
+    <label class="mt-4">Description</label>
+    <textarea class="form-control" type="text" placeholder="Add Description" asp-for="Decription"></textarea>
+
+    <button class="btn btn-primary mt-4" asp-action="CreateEditForm" type="submit">Ok</button>
+</form>
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-whiet py-2">Delete Category</h2>
+            </div>
+        </div>
+    </div>
+ </div>
+  
+
+
+
+
