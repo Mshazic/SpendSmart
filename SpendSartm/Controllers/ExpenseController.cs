@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SpendSartm.Data;
 using SpendSartm.Models;
 
@@ -65,12 +66,42 @@ namespace SpendSartm.Controllers
             return Redirect("Expense");
         }
 
-        public IActionResult DeleteExpense(int id)
+        // public IActionResult DeleteExpense(int id)
+        // {
+        //    var expenseInDb = _context.Expenses.SingleOrDefault(x => x.Id == id);
+        //    _context.Expenses.Remove(expenseInDb);
+        //  _context.SaveChanges();
+        //     return Redirect("Expense");
+        //}
+
+        public IActionResult DeleteExpense(int? id)
         {
-            var expenseInDb = _context.Expenses.SingleOrDefault(x => x.Id == id);
-            _context.Expenses.Remove(expenseInDb);
+            var expense = _context.Expenses.Find(id);
+            if (expense == null)
+            {
+                return NotFound();
+            }
+            //get items from DB
+            _context.Expenses.Remove(expense);
             _context.SaveChanges();
-            return Redirect("Expense");
+            return RedirectToAction("DeleteExpense");
+        }
+
+        //Get - delete
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            //get items from DB
+            var expense = _context.Expenses.Find(id);
+            if (expense == null)
+            {
+                return NotFound();
+            }
+
+            return View(expense);  // return the view with out object so we can display the info we are getting
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
