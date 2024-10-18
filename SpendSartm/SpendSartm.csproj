@@ -32,7 +32,4 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Remove="Views\Expense\DeleteExpense.cshtml" />
-  </ItemGroup>
 </Project>
