@@ -34,8 +34,9 @@ namespace SpendSartm.Controllers
             List<Expense> allExpenses = _context.Expenses.ToList();
             
             var totalExpenses = allExpenses.Sum(x => x.Value);
-
+            //var suplus = allExpenses.Average(x => x.)
             ViewBag.Expenses = totalExpenses;
+
 
             return View(allExpenses);
         }
