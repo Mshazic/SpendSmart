@@ -6,6 +6,10 @@ namespace SpendSartm.Models
 	public class Expense
 	{
 		public int Id { get; set; }
+		//Allocate a budget to be spesnd
+		//[Required]
+		//public int Budget { get; set; }
+
 		public decimal Value { get; set; }
 		[Required]
 		public string?  Decription { get; set; }
