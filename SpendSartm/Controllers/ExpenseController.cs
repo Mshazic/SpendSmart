@@ -19,7 +19,7 @@ namespace SpendSartm.Controllers
         {
             List<Expense> allExpenses = _context.Expenses.ToList();
 
-            var totalExpenses = allExpenses.Sum(x => x.Value);
+           // var totalExpenses = allExpenses.Sum(x => x.Value);
 
             return View(allExpenses);
         }
@@ -34,7 +34,7 @@ namespace SpendSartm.Controllers
             List<Expense> allExpenses = _context.Expenses.ToList();
             
             var totalExpenses = allExpenses.Sum(x => x.Value);
-            //var suplus = allExpenses.Average(x => x.)
+           // var suplus = allExpenses.Average(x => x.)
             ViewBag.Expenses = totalExpenses;
 
 
@@ -43,27 +43,35 @@ namespace SpendSartm.Controllers
 
         public IActionResult CreateEditExpense(int? id)
         {
+
             if (id != null)
             {
                 var expenseInDb = _context.Expenses.SingleOrDefault(x => x.Id == id);
                 return View(expenseInDb);
             }
 
-            return View();
+             return View();
         }
 
         public IActionResult CreateEditForm(Expense model)
         {
-            if (model.Id == 0)
+            if (ModelState.IsValid)
             {
                 _context.Expenses.Add(model);
+                _context.SaveChanges();
+                //TempData["success"] = "Category created successfully";
+                return RedirectToAction("Index");
+            }
+            //    if (model.Id == 0)
+            //    { 
+            //        _context.Expenses.Add(model);
 
-            }
-            else
-            {
-                _context.Expenses.Update(model);
-            }
-            _context.SaveChanges();
+            //    }
+            //    else
+            //    {
+            //        _context.Expenses.Update(model);
+            //    }
+          
             return Redirect("Expense");
         }
 

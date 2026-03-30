@@ -11,8 +11,8 @@ using SpendSartm.Data;
 namespace SpendSartm.Migrations
 {
     [DbContext(typeof(ExpensesDbContext))]
-    [Migration("20240731123649_Expenses")]
-    partial class Expenses
+    [Migration("20260330123120_AddToSpendDb")]
+    partial class AddToSpendDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,10 @@ namespace SpendSartm.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Decription")
+                    b.Property<decimal>("Budget")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Discription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -42,6 +45,29 @@ namespace SpendSartm.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Expenses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Budget = 20000m,
+                            Discription = "Groceries",
+                            Value = 150.00m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Budget = 2500m,
+                            Discription = "Rent",
+                            Value = 1200.00m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Budget = 30000m,
+                            Discription = "Utilities",
+                            Value = 200.00m
+                        });
                 });
 #pragma warning restore 612, 618
         }
