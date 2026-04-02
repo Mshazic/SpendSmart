@@ -12,6 +12,7 @@ namespace SpendSartm.Data
 
         public DbSet<Expense> Expenses { get; set; }
 
+<<<<<<< Updated upstream
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Expense>().HasData(
@@ -40,6 +41,34 @@ namespace SpendSartm.Data
            }
 
 
+=======
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Expense>().HasData(
+                new Expense
+                {
+                    Id = 1,
+                    Discription = "Groceries",
+                    Value = 150.00m,
+                    Budget = 20000,
+                },
+                new Expense
+                {
+                    Id = 2,
+                    Discription = "Rent",
+                    Value = 1200.00m,
+                    Budget = 2500,
+                },
+                new Expense
+                {
+                    Id = 3,
+                    Discription = "Utilities",
+                    Value = 200.00m,
+                    Budget = 30000,
+                }
+            );
+        }
+>>>>>>> Stashed changes
 
     }
 }
