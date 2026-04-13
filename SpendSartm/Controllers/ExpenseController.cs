@@ -52,28 +52,50 @@ namespace SpendSartm.Controllers
 
              return View();
         }
-
+        // ExpenseController.cs
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult CreateEditForm(Expense model)
         {
             if (ModelState.IsValid)
             {
+                return View("CreateEditExpense", model);
+            }
+            if (model.Id == 0)
+            {
                 _context.Expenses.Add(model);
                 _context.SaveChanges();
-                //TempData["success"] = "Category created successfully";
+            }
+            else
+            {
+                _context.Expenses.Update(model);
+
+                _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //    if (model.Id == 0)
-            //    { 
-            //        _context.Expenses.Add(model);
-
-            //    }
-            //    else
-            //    {
-            //        _context.Expenses.Update(model);
-            //    }
-          
-            return Redirect("Expense");
+             return View("CreateEditExpense", model);
         }
+        //public IActionResult CreateEditForm(Expense model)
+        //{
+        //    //if (ModelState.IsValid)
+        //    //{
+        //        _context.Expenses.Add(model);
+        //        _context.SaveChanges();
+        //        //TempData["success"] = "Category created successfully";
+        //        return RedirectToAction("Index");
+        //   // }
+        //    //if (model.Id == 0)
+        //    //{
+        //    //    _context.Expenses.Add(model);
+
+        //    //}
+        //    //else
+        //    //{
+        //    //    _context.Expenses.Update(model);
+        //    //}
+
+        //    return Redirect("Expense");
+        //}
 
         // public IActionResult DeleteExpense(int id)
         // {
