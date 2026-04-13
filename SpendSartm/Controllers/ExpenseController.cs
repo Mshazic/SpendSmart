@@ -57,7 +57,7 @@ namespace SpendSartm.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreateEditForm(Expense model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View("CreateEditExpense", model);
             }
@@ -70,8 +70,10 @@ namespace SpendSartm.Controllers
             {
                 _context.Expenses.Update(model);
 
+            }
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+             //return View("CreateEditExpense", model);
+             return RedirectToAction("Expense");
             }
              return View("CreateEditExpense", model);
         }

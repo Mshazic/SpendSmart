@@ -9,7 +9,7 @@ namespace SpendSartm.Models
 		
 		public decimal Value { get; set; }
 		[Required]
-		public string?  Discription { get; set; }
+		public string? Discription { get; set; } = string.Empty;
 	}
 }
 
