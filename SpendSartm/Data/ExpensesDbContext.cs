@@ -12,7 +12,7 @@ namespace SpendSartm.Data
 
         public DbSet<Expense> Expenses { get; set; }
 
-<<<<<<< Updated upstream
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Expense>().HasData(
