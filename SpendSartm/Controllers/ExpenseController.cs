@@ -69,44 +69,14 @@ namespace SpendSartm.Controllers
             else
             {
                 _context.Expenses.Update(model);
-
+                
             }
-                _context.SaveChanges();
+            _context.SaveChanges();
              //return View("CreateEditExpense", model);
              return RedirectToAction("Expense");
-            }
-             return View("CreateEditExpense", model);
         }
-        //public IActionResult CreateEditForm(Expense model)
-        //{
-        //    //if (ModelState.IsValid)
-        //    //{
-        //        _context.Expenses.Add(model);
-        //        _context.SaveChanges();
-        //        //TempData["success"] = "Category created successfully";
-        //        return RedirectToAction("Index");
-        //   // }
-        //    //if (model.Id == 0)
-        //    //{
-        //    //    _context.Expenses.Add(model);
-
-        //    //}
-        //    //else
-        //    //{
-        //    //    _context.Expenses.Update(model);
-        //    //}
-
-        //    return Redirect("Expense");
-        //}
-
-        // public IActionResult DeleteExpense(int id)
-        // {
-        //    var expenseInDb = _context.Expenses.SingleOrDefault(x => x.Id == id);
-        //    _context.Expenses.Remove(expenseInDb);
-        //  _context.SaveChanges();
-        //     return Redirect("Expense");
-        //}
-
+        
+      
         public IActionResult DeleteExpense(int? id)
         {
             var expense = _context.Expenses.Find(id);

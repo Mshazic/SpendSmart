@@ -11,9 +11,9 @@ namespace SpendSartm.Data
 		}
 
         public DbSet<Expense> Expenses { get; set; }
+		public DbSet<Budget> Budgets { get; set; }
 
-
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Expense>().HasData(
 				new Expense
@@ -38,8 +38,18 @@ namespace SpendSartm.Data
                   
                 }
 			);
-           }
 
+			modelBuilder.Entity<Budget>().HasData(
+				new Budget
+				{   Id=1,
+					AllocateBudget = 45000.00m,
+                }
+				
+
+                );
+           }
+		
+		
 
 
     }
