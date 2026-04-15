@@ -15,8 +15,17 @@ namespace SpendSartm.Controllers
         }
         public IActionResult Index()
         {
+            List<Expense> allExpenses = _context.Expenses.ToList();
+
             return View();
         }
+
+        public IActionResult Budget()
+        {
+            List<Budget> allBudgets = _context.Budgets.ToList();
+            return View(allBudgets);
+        }
+
 
         public IActionResult CreateEditBudget(int? id)
         {

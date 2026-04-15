@@ -1,0 +1,45 @@
+﻿@model List<Budget>
+<div class="text-center">
+    <h1 class="display-4">Expense</h1>
+    <br />
+    <hr />
+    <h3>Total expenses R @ViewBag.Budget </h3>
+   
+    <br />
+    <a asp-controller="Budget" asp-action="CreateEditExpense" class="btn btn-secondary align-self-start mb-3">Create New</a>
+    <br />
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    AllocateBudget
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null)
+            {
+                foreach (var obj in Model)
+                {
+
+                    <tr>
+                        <td>@obj.Id</td>
+                        <td>@obj.AllocateBudget</td>
+                     
+                        <td>
+                            <a asp-controller="Budget" asp-action="CreateEditBudgetForm" class="btn btn-warning" asp-route-id="@obj.Id">Edit</a>
+                            <a asp-action="DeleteExpense" class="btn btn-danger" asp-route-id="@obj.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            }
+
+        </tbody>
+    </table>
+</div>
